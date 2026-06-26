@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} — {{ artist }} ({{ lang_name }})</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p><strong>{{ artist }}</strong></p>
+    <p style="color: #666;">Язык: {{ lang_name }}</p>
+
+    <div class="lyrics">
+        {% for line in lines %}
+            <p>{{ line }}</p>
+        {% endfor %}
+    </div>
+
+    <hr>
+    <nav>
+        <a href="{% url 'song_lyrics_en' %}">English</a> |
+        <a href="{% url 'song_lyrics_fr' %}">Français</a> |
+        <a href="{% url 'song_lyrics_de' %}">Deutsch</a> |
+        <a href="{% url 'song_lyrics_es' %}">Español</a>
+    </nav>
+</body>
+</html>

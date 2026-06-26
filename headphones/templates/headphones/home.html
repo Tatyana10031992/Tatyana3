@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Наушники — поиск</title>
+</head>
+<body>
+    <h1>Каталог наушников</h1>
+    <p>Введите код модели в поле ниже:</p>
+
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="model" placeholder="Например: budslive, airpods" required>
+        <button type="submit">Найти</button>
+    </form>
+</body>
+</html>

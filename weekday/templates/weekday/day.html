@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ day_name }} — Сегодняшний день</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Базовые стили: если класс не подошёл, будет нейтральный фон */
+        .day-container {
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* Цвета для каждого дня */
+        .monday    { background-color: #3b82f6; } /* синий */
+        .tuesday   { background-color: #ef4444; } /* красный */
+        .wednesday { background-color: #f59e0b; } /* оранжевый */
+        .thursday  { background-color: #10b981; } /* зелёный */
+        .friday    { background-color: #8b5cf6; } /* фиолетовый */
+        .saturday  { background-color: #fb7185; } /* розово‑красный */
+        .sunday    { background-color: #6364ff; } /* сине‑фиолетовый */
+
+        h1 { margin: 0 0 10px 0; font-size: 3rem; }
+        p { margin: 0; font-size: 1.2rem; }
+    </style>
+</head>
+<body class="{{ css_class }}">
+    <div class="day-container">
+        <h1>{{ day_name }}</h1>
+        <p>Сегодня именно этот день недели.</p>
+    </div>
+</body>
+</html>

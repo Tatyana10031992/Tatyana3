@@ -1,0 +1,15 @@
+{% extends "cars/base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<p><strong>Бренд:</strong> {{ brand_name }}</p>
+<p>{{ description }}</p>
+
+<h2>Модели</h2>
+<ul>
+  {% for model in models %}
+    <li>
+      <strong>{{ model.name }}</strong> ({{ model.year }}) — {{ model.price }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
