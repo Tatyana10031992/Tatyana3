@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>День программиста</title>
+</head>
+<body>
+  <h2>День программиста (256‑й день года)</h2>
+
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  {% if result %}
+    <h3>Результат</h3>
+    <p>
+      В {{ result.year }} году День программиста приходится на
+      <b>{{ result.date_str }} ({{ result.weekday }})</b>.
+    </p>
+    <a href="/prog/">Рассчитать для другого года</a>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      <label>
+        <b>Введите год:</b><br>
+        <input type="number" name="year" value="{{ year_input|default:'' }}" required min="1" max="9999">
+      </label><br><br>
+      <button type="submit">Рассчитать</button>
+    </form>
+  {% endif %}
+
+  <p><a href="/">На главную (или другой раздел)</a></p>
+</body>
+</html>

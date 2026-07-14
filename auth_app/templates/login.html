@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Вход</title>
+</head>
+<body>
+  <h2>Форма входа</h2>
+
+  {% if message %}
+    <p style="color: red;">{{ message }}</p>
+  {% endif %}
+
+  {% if greeting %}
+    <h3>{{ greeting }}</h3>
+    <p>Ваш уровень доступа: <b>{{ role }}</b></p>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      <label>Логин: <input type="text" name="login" required></label><br><br>
+      <label>Пароль: <input type="password" name="password" required></label><br><br>
+      <button type="submit">Войти</button>
+    </form>
+  {% endif %}
+</body>
+</html>

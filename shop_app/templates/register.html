@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Регистрация в интернет‑магазине</title>
+</head>
+<body>
+  <h2>Регистрация пользователя</h2>
+
+  {% if errors %}
+    <p style="color: red;">
+      <b>Есть ошибки:</b><br>
+      {% for err in errors %}
+        • {{ err }}<br>
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if data %}
+   
+    <h3>Данные пользователя</h3>
+    <p><b>Имя:</b> {{ data.first_name }}</p>
+    <p><b>Фамилия:</b> {{ data.last_name }}</p>
+    <p><b>Возраст:</b> {{ data.age }}</p>
+    <p><b>Email:</b> {{ data.email }}</p>
+    <p><b>Пол:</b>
+      {% if data.gender == 'male' %}Мужской{% elif data.gender == 'female' %}Женский{% else %}Не указан{% endif %}
+    </p>
+    <p><b>Адрес доставки:</b> {{ data.address }}</p>
+    <p><b>Подписка на новости:</b>
+      {% if data.subscribe %}Да{% else %}Нет{% endif %}
+    </p>
+    <hr>
+    <a href="/shop/">Заполнить форму заново</a>
+  {% else %}
+  
+    <form method="post">
+      {% csrf_token %}
+
+      <label><b>Имя:</b></label><br>
+      <input type="text" name="first_name" value="{{ raw.first_name|default:'' }}" required><br><br>
+
+      <label><b>Фамилия:</b></label><br>
+      <input type="text" name="last_name" value="{{ raw.last_name|default:'' }}" required><br><br>
+
+      <label><b>Возраст:</b></label><br>
+      <input type="number" name="age" value="{{ raw.age|default:'' }}" min="0" max="150" required><br><br>
+
+      <label><b>Email:</b></label><br>
+      <input type="email" name="email" value="{{ raw.email|default:'' }}" required><br><br>
+
+      <label><b>Пол:</b></label><br>
+      <label>
+        <input type="radio" name="gender" value="male"
+          {% if raw.gender == 'male' %}checked{% endif %} required>
+        Мужской
+      </label><br>
+      <label>
+        <input type="radio" name="gender" value="female"
+          {% if raw.gender == 'female' %}checked{% endif %}>
+        Женский
+      </label><br><br>
+
+      <label><b>Адрес для доставки товара:</b></label><br>
+      <textarea name="address" rows="3" cols="40" required>{{ raw.address|default:'' }}</textarea><br><br>
+
+      <label>
+        <input type="checkbox" name="subscribe"
+          {% if raw.subscribe %}checked{% endif %}>
+        Хотите ли подписаться на новости нашего интернет‑магазина?
+      </label><br><br>
+
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+  {% endif %}
+
+  <p><a href="/">На главную (или другой раздел)</a></p>
+</body>
+</html>

@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'cars',
     'weekday',
     'headphones',
+    'auth_app',
+    'calc_app',
+    'shop_app',
+    'prog_day_app',
   
 ]
 
