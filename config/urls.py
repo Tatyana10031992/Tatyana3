@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from auth_app import views
 
 
 urlpatterns = [
@@ -49,6 +50,15 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('headphones.urls')),
+]
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('login/', include('auth_app.urls')),
+    path('calc/', include('calc_app.urls')),
+    path('shop/', include('shop_app.urls')),
+    path('prog/', include('prog_day_app.urls')),
+   
 ]
 
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Калькулятор: минимум, максимум, среднее</title>
+</head>
+<body>
+  <h2>Введите три числа и выберите операцию</h2>
+
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  {% if result is not None %}
+    <p><b>Результат:</b> {{ result }}</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label>Число 1: <input type="text" name="num1" value="{{ num1|default:'' }}"></label><br><br>
+    <label>Число 2: <input type="text" name="num2" value="{{ num2|default:'' }}"></label><br><br>
+    <label>Число 3: <input type="text" name="num3" value="{{ num3|default:'' }}"></label><br><br>
+
+    <h3>Выберите операцию:</h3>
+    <p>
+      <label><input type="radio" name="operation" value="min" required> Минимум из трёх</label><br>
+      <label><input type="radio" name="operation" value="max"> Максимум из трёх</label><br>
+      <label><input type="radio" name="operation" value="avg"> Среднее арифметическое</label>
+    </p>
+
+    <button type="submit">Вычислить</button>
+  </form>
+
+  <p><a href="/login/">Вернуться к форме входа</a></p>
+</body>
+</html>
