@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список фильмов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .film-item {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 15px 20px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 600px;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+        .film-item:hover {
+            background: rgba(255, 215, 0, 0.15);
+            transform: translateX(10px);
+        }
+        .film-item a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+        .film-item a:hover {
+            color: #fff;
+        }
+        .film-episode {
+            color: #888;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .back {
+            display: block;
+            text-align: center;
+            color: #ffd700;
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .back:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Все фильмы Звёздных Войн</h1>
+    {% for film in films %}
+        <div class="film-item">
+            <a href="{% url 'starwars_app:film_detail' film.episode_id %}">
+                {{ film.title }}
+                <span class="film-episode">(Эпизод {{ film.episode_id }})</span>
+            </a>
+        </div>
+    {% empty %}
+        <p style="text-align: center; color: #888;">Фильмы не найдены</p>
+    {% endfor %}
+    <a href="{% url 'starwars_app:home' %}" class="back">← На главную</a>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ошибка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .error-container {
+            background: rgba(255, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 600px;
+            text-align: center;
+            border: 2px solid #ff4444;
+        }
+        .error-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #ff4444;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        .back {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .back:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+        .suggestions {
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        <h1>Ошибка подключения</h1>
+        <div class="error-message">
+            {{ error }}
+        </div>
+        <a href="{% url 'starwars_app:home' %}" class="back">← На главную</a>
+        <div class="suggestions">
+            <p>💡 Попробуйте:</p>
+            <ul style="text-align: left; color: #999;">
+                <li>Проверить интернет-соединение</li>
+                <li>Обновить страницу через несколько секунд</li>
+                <li>Проверить доступность swapi.dev</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

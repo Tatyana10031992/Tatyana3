@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Star Wars API Explorer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin-bottom: 40px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .menu a {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px 40px;
+            border-radius: 12px;
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            min-width: 150px;
+            text-align: center;
+        }
+        .menu a:hover {
+            background: #ffd700;
+            color: #1a1a2e;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>⭐ Star Wars API Explorer ⭐</h1>
+    <div class="menu">
+        <a href="{% url 'starwars_app:films_list' %}">🎬 Фильмы</a>
+        <a href="{% url 'starwars_app:people_list' %}">👤 Персонажи</a>
+        <a href="{% url 'starwars_app:planets_list' %}">🪐 Планеты</a>
+        <a href="{% url 'starwars_app:starships_list' %}">🚀 Корабли</a>
+    </div>
+    <p class="subtitle">Данные из API Star Wars (SWAPI)</p>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ planet.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #ffd700;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        .info {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .info p {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+        .info strong {
+            color: #ffd700;
+        }
+        .back {
+            display: block;
+            text-align: center;
+            color: #ffd700;
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .back:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ planet.name }}</h1>
+    <div class="info">
+        <p><strong>Климат:</strong> {{ planet.climate }}</p>
+        <p><strong>Диаметр:</strong> {{ planet.diameter }} км</p>
+        <p><strong>Гравитация:</strong> {{ planet.gravity }}</p>
+        <p><strong>Население:</strong> {{ planet.population }}</p>
+        <p><strong>Период вращения:</strong> {{ planet.rotation_period }} часов</p>
+        <p><strong>Период орбиты:</strong> {{ planet.orbital_period }} дней</p>
+        <p><strong>Террейн:</strong> {{ planet.terrain }}</p>
+        <p><strong>Поверхностная вода:</strong> {{ planet.surface_water }}%</p>
+    </div>
+    <a href="{% url 'starwars_app:planets_list' %}" class="back">← Назад к планетам</a>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список планет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .planet-item {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 15px 20px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 600px;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+        .planet-item:hover {
+            background: rgba(255, 215, 0, 0.15);
+            transform: translateX(10px);
+        }
+        .planet-item a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+        .planet-item a:hover {
+            color: #fff;
+        }
+        .back {
+            display: block;
+            text-align: center;
+            color: #ffd700;
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .back:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🪐 Планеты Звёздных Войн</h1>
+    {% for planet in planets %}
+        <div class="planet-item">
+            <a href="{% url 'starwars_app:planet_detail' forloop.counter %}">
+                {{ planet.name }}
+            </a>
+        </div>
+    {% empty %}
+        <p style="text-align: center; color: #888;">Планеты не найдены</p>
+    {% endfor %}
+    <a href="{% url 'starwars_app:home' %}" class="back">← На главную</a>
+</body>
+</html>

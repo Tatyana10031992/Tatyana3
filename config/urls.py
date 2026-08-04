@@ -14,51 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-from django.contrib import admin
-from django.urls import path, include
-from auth_app import views
-
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('lyrics.urls')),  
-    ]
-
-
-
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cars.urls')),
+    path('', include('starwars_app.urls')),  # starwars_app, НЕ swap_app
 ]
-
-
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('weekday/', include('weekday.urls')),
-]
-
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('headphones.urls')),
-]
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', include('auth_app.urls')),
-    path('calc/', include('calc_app.urls')),
-    path('shop/', include('shop_app.urls')),
-    path('prog/', include('prog_day_app.urls')),
-   
-]
-
-
