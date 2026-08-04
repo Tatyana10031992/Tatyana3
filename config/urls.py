@@ -19,5 +19,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('starwars_app.urls')),  # starwars_app, НЕ swap_app
+    path('', include('starwars_app.urls')), 
+    path('services/', include('services.urls')),
+    path('auth/', include('auth_app.urls')),
+    path('calc/', include('calc_app.urls')),
+    path('cars/', include('cars.urls')),
+    path('headphones/', include('headphones.urls')),
+    path('lyrics/', include('lyrics.urls')),
+    path('prog-day/', include('prog_day_app.urls')),
+    path('shop/', include('shop_app.urls')),
+    path('weekday/', include('weekday.urls')),
 ]

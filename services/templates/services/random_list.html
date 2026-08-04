@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Список чисел</title></head>
+<body>
+    <h1>Список случайных чисел</h1>
+    <p>Запрошено чисел: {{ count }}</p>
+    <ul>
+        {% for n in numbers %}
+            <li>{{ n }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/services/random/list/10/">10 чисел</a> | 
+    <a href="/services/random/list/3/">3 числа</a>
+</body>
+</html>

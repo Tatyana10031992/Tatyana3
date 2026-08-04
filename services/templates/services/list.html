@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ title }}</title></head>
+<body>
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% empty %}
+            <li>Пусто</li>
+        {% endfor %}
+    </ul>
+    <a href="/services/poems/">Назад к стихам</a>
+</body>
+</html>

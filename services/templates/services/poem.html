@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Стихотворение</title></head>
+<body>
+    <h1>Стихотворение ({{ mode }})</h1>
+    
+    {% if error %}
+        <p style="color: red;">Стихов не найдено по этому критерию.</p>
+        <a href="/services/poems/">Вернуться к случайному</a>
+    {% elif poem %}
+        <h2>{{ poem.title }}</h2>
+        <p><strong>Автор:</strong> {{ poem.author }}</p>
+        <p><strong>Тема:</strong> {{ poem.theme }}</p>
+        <hr>
+        <pre style="font-family: serif; font-size: 18px; line-height: 1.6;">{{ poem.text }}</pre>
+    {% endif %}
+
+    <br><hr>
+    <h3>Навигация по стихам:</h3>
+    <a href="/services/poems/authors/">Все авторы</a> | 
+    <a href="/services/poems/themes/">Все темы</a><br>
+    <a href="/services/poems/author/А.%20Блок/">Стихи Блока</a> | 
+    <a href="/services/poems/theme/любовь/">Стихи о любви</a>
+</body>
+</html>
