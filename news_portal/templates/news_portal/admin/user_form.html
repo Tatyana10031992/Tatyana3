@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if user %}Редактировать пользователя{% else %}Добавить пользователя{% endif %}</title>
+</head>
+<body>
+    <h1>{% if user %}Редактирование пользователя{% else %}Добавление пользователя{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Имя пользователя (username):</label><br>
+        <input type="text" name="username"
+            value="{% if user %}{{ user.username }}{% endif %}"
+            required style="width: 300px; padding: 6px;"
+            {% if user %}disabled{% endif %}><br><br>
+
+        {% if not user %}
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required
+                style="width: 300px; padding: 6px;"><br><br>
+        {% endif %}
+
+        {% if user %}
+            <p><small>Пароль нельзя изменить через эту форму (для безопасности).</small></p>
+        {% endif %}
+
+        {% if user %}
+            <button type="submit">Сохранить изменения (только имя/статус)</button>
+            <a href="{% url 'admin_users' %}">Отмена</a>
+        {% else %}
+            <button type="submit">Создать пользователя</button>
+            <a href="{% url 'admin_users' %}">Отмена</a>
+        {% endif %}
+    </form>
+</body>
+</html>

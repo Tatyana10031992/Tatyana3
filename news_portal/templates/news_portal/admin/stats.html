@@ -1,0 +1,9 @@
+<h1>Статистика</h1>
+<h2>Топ по просмотрам</h2>
+<ol>{% for a in by_views %}<li>{{ a.title }} ({{ a.views }})</li>{% endfor %}</ol>
+
+<h2>Топ по комментариям</h2>
+<ol>{% for a in by_comments %}<li>{{ a.title }} ({{ a.c }})</li>{% endfor %}</ol>
+
+<h2>Топ по сохранениям</h2>
+<ol>{% for a in by_saved %}<li>{{ a.title }} ({{ a.s }})</li>{%

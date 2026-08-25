@@ -1,0 +1,30 @@
+<h1>Пользователи</h1>
+<a href="{% url 'admin_user_add' %}">Добавить пользователя</a>
+<table>
+  <thead>
+    <tr><th>Имя</th><th>Действия</th></tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+      <tr>
+        <td>{{ u.username }}</td>
+        <td>
+          <form method="post" action="{% url 'admin_user_ban' u.pk %}" style="display:inline;">
+            {% csrf_token %}
+            <select name="period">
+              <option value="day">День</option>
+              <option value="week">Неделя</option>
+              <option value="month">Месяц</option>
+              <option value="forever">Навсегда</option>
+            </select>
+            <button type="submit">Забанить</button>
+          </form>
+          <form method="post" action="{% url 'admin_user_delete' u.pk %}" style="display:inline;" onsubmit="return confirm('Удалить?');">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

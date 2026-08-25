@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Новостной портал</title></head>
+<body style="background-color: {{ site_settings.background_color }};
+             color: {{ site_settings.font_color }};
+             font-size: {{ site_settings.font_size }}px;">
+  <h1>Добро пожаловать на Новостной портал города</h1>
+  <p>Здесь будут новости и статьи.</p>
+  {% if user.is_authenticated %}
+    <p>Вы вошли как: {{ user.username }}</p>
+    {% if user.groups.filter(name="Администратор").exists %}
+      <p><strong>Вы — администратор!</strong></p>
+      <a href="/admin/articles/">Перейти в админку статей</a>
+    {% endif %}
+  {% else %}
+    <a href="/accounts/login/">Войти</a>
+  {% endif %}
+</body>
+</html>
