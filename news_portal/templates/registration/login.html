@@ -1,0 +1,7 @@
+<h1>Вход</h1>
+<form method="post">
+  {% csrf_token %}
+  <label>Логин: <input type="text" name="username"></label><br>
+  <label>Пароль: <input type="password" name="password"></label><br>
+  <button type="submit">Войти</button>
+</form>

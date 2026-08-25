@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if article %}Редактировать статью{% else %}Создать статью{% endif %}</title>
+</head>
+<body>
+    <h1>{% if article %}Редактирование статьи{% else %}Создание статьи{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Заголовок:</label><br>
+        <input type="text" name="title" value="{% if article %}{{ article.title }}{% endif %}" required style="width: 400px; padding: 6px;"><br><br>
+
+        <label>Текст статьи:</label><br>
+        <textarea name="content" rows="10" cols="60" required style="padding: 6px;">
+            {% if article %}{{ article.content }}{% endif %}
+        </textarea><br><br>
+
+        {% if article %}
+            <button type="submit">Сохранить изменения</button>
+            <a href="{% url 'admin_articles' %}">Отмена</a>
+        {% else %}
+            <button type="submit">Опубликовать</button>
+            <a href="{% url 'admin_articles' %}">Отмена</a>
+        {% endif %}
+    </form>
+</body>
+</html>

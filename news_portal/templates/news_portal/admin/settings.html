@@ -1,0 +1,8 @@
+<h1>Настройки оформления</h1>
+<form method="post">
+  {% csrf_token %}
+  <label>Цвет фона: <input type="color" name="bg_color" value="{{ settings.background_color }}"></label><br>
+  <label>Цвет шрифта: <input type="color" name="font_color" value="{{ settings.font_color }}"></label><br>
+  <label>Размер шрифта (px): <input type="number" name="font_size" value="{{ settings.font_size }}"></label><br>
+  <button type="submit">Сохранить</button>
+</form>
